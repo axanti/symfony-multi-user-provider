@@ -11,10 +11,11 @@ use EasyCorp\Bundle\EasyAdminBundle\Config\Actions;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\EmailField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\BooleanField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\CountryField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\LanguageField;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
-use EasyCorp\Bundle\EasyAdminBundle\Field\CountryField;
 
 class ClientCrudController extends AbstractCrudController
 {
@@ -71,8 +72,9 @@ class ClientCrudController extends AbstractCrudController
             ->onlyOnForms(),
             TextField::new('faxNumber')
             ->onlyOnForms(),
-            TextField::new('language')
-            ->onlyOnForms(),
+            LanguageField::new('language')
+            ->onlyOnForms()
+            ->setFormTypeOptions(['preferred_choices' => ['fr']]),
             BooleanField::new('status'),
             BooleanField::new('isVerified'),
         ];
